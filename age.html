@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+</head>
+<style>
+     *{
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(45deg,white,yellow,red);
+        font-weight: 1000;
+       
+
+    }
+    .age{
+        height: 300px;
+        width: 300px;
+        border: 2px solid white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: bisque;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        
+    }
+    input{
+        font-size: larger;
+        font-weight: bolder;
+    }
+    #dob{
+        height: 30px;
+        width: 80%;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 10px 0px;
+    }
+    #results{
+        height: 30px;
+        width: 80%;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 10px 0px;
+        background-color: white;
+        font-size: larger;
+        font-weight: bolder;
+        color: black;
+        border-radius: 5px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+    #btn{
+        height: 40px;
+        width: 50%;
+        border-radius: 5px;
+        border: 1px solid black;
+        font-size: large;
+        font-weight: 600;
+    }
+    #btn:hover{
+        background-color: blue;
+        color: white;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="age">
+            <h2>AGE CALCULATOR</h2>
+            <label for="dob">Enter your date of birth:</label>
+            <input type="date" id="dob">
+            <button id="btn" onclick="calculateAge()">Click here</button>
+            <label for="age">Your age is:</label>
+            <div id="results"></div>
+        </div>
+    </div>
+</body>
+<script>
+    function calculateAge(){
+        const dob = new Date(document.getElementById('dob').value);
+        const currentDate = new Date();
+        age = currentDate.getFullYear() - dob.getFullYear();
+        results.innerText = `${age} Years`;
+        
+    }
+</script>
+</html>

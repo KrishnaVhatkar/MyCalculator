@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angle</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(45deg,white,blue);
+        overflow: hidden;
+    }
+    .angle{
+        height: 400px;
+        width: 400px;
+        border-radius: 5px;
+        border: 2px solid white;
+        background-color: bisque;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: large;
+        overflow: hidden;
+        font-weight: 600;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+    #radian{
+        height: 30px;
+        width: 80%;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 10px 0px;
+    }
+    input{
+        font-size: larger;
+        font-weight: bolder;
+    }
+    #results{
+        height: 30px;
+        width: 80%;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 10px 0px;
+        background-color: #fff;
+        font-size: larger;
+        font-weight: bolder;
+        color: black;
+    }
+    #btn{
+        height: 40px;
+        width: 50%;
+        border-radius: 5px;
+        border: 1px solid black;
+        font-size: large;
+        font-weight: 600;
+    }
+    #btn:hover{
+        background-color: blue;
+        color: white;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="angle">
+            <h1>Angle Calculator</h1>
+            <label for="angle">Enter the angle in Radian</label>
+            <input type="number" id="radian">
+            <button id="btn" onclick="calculateAngle()">Calculate Angle</button>
+            <label for="results">Angle in degree is:</label>
+            <div id="results"></div>
+        </div>
+    </div>
+</body>
+<script>
+    function calculateAngle(){
+        const radian = Number.parseFloat(document.getElementById('radian').value);
+        const results = document.getElementById('results');
+        deg = Number.parseFloat(radian*180/3.142,2);
+        results.innerText = `${Math.round(deg*1000)/1000} deg`;
+    }
+</script>
+</html>

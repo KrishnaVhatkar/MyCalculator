@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOAN</title>
+</head>
+<style>
+     *{
+        margin: 0;
+        padding: 0;
+    }
+     .container{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(45deg,yellow,red);
+        color: white;
+       
+
+    }
+    .loan{
+        height: 400px;
+        width: 400px;
+        border: 2px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: purple;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+    #amount{
+        height: 30px;
+        width: 80%;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 10px 0px;
+    }
+    #intrest{
+        height: 30px;
+        width: 80%;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 10px 0px;
+    }
+    input{
+        font-size: larger;
+        font-weight: bolder;
+    }
+    #months{
+        height: 30px;
+        width: 80%;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 10px 0px;
+    }
+    #results{
+        height: 30px;
+        width: 80%;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 10px 0px;
+        color: black;
+        background-color: white;
+        font-size: larger;
+        font-weight: bolder;
+    }
+    #btn{
+        height: 40px;
+        width: 50%;
+        border-radius: 5px;
+        border: 1px solid black;
+        font-size: large;
+        font-weight: 600;
+    }
+    #btn:hover{
+        background-color: blue;
+        color: white;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <div class="loan">
+            <h1>EMI calculator</h1>
+            <label for="amount">Enter the Principal amount</label>
+            <input type="number" id="amount">
+            <label for="intrest">Enter the Intrest Rate</label>
+            <input type="number" id="intrest">
+            <label for="months">Enter the months</label>
+            <input type="number"  id="months">
+            <button id="btn" onclick="calculateEMI()">Calculate EMI</button>
+            <label for="emi">The EMI will be:</label>
+            <div id="results"></div>
+            
+        </div>
+    </div>
+</body>
+<script>
+function calculateEMI(){
+    const amount =Number.parseInt( document.getElementById('amount').value);
+    const months =Number.parseInt( document.getElementById('months').value);
+    const intrest =Number.parseInt( document.getElementById('intrest').value);
+    const ir = Number.parseFloat(intrest/(12*100));
+    let emi =Number.parseInt((amount * ir*(1+ir)**months)/(((1+ir)**months) -1));
+    let results = document.getElementById('results');
+    results.innerText = emi;
+
+
+}
+ 
+</script>
+</html>

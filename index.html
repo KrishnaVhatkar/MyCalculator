@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<style>
+     *{
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg,green,white);
+        overflow: hidden;
+
+
+    }
+    .calcy{
+        height: 400px;
+        width: 550px;
+        border: 2px solid white;
+        background-color: rgb(78, 78, 157);
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+    .row{
+        display: flex;
+        align-items: space-between;
+    }
+    #resultBar{
+        width: 96%;
+        height: 50px;
+        border: 1px solid black;
+        margin: 5px;
+        direction: rtl;
+        background-color: white;
+        border-radius: 5px;
+        font-size: 30px;
+        font-weight: 600;
+        padding:5px;
+
+    }
+    .btn{
+        height: 40px;
+        width: 90px;
+        border:1px solid black;
+        border-radius: 5px;
+        margin: 5px;
+        font-size: large;
+        font-weight: 600;
+        cursor: pointer;
+        background-color: white;
+    }
+    .btn:hover{
+        background-color: RGB(26 144 249);
+        color: white;
+    }
+    .btn img{
+        height: 30px;
+        margin: 0;
+        padding: 0;
+    }
+    .heading{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: 1000;
+    }
+    #temp{
+        width: 150px;
+    }
+    .btn a{
+        color: black;
+        text-decoration: none;
+    }
+</style>
+<body>
+    <div class="container">
+    
+        <div class="calcy">
+            <div class="heading"><h1>My Calculator</h1> </div>
+            <div id="resultBar"></div>
+            <div class="row">
+                
+                <button class="btn" onclick="clearResults()">C</button>
+                <button class="btn" onclick='showResults("sin")'>sin</button>
+                <button class="btn" onclick="showResults('1')">1</button>
+                <button class="btn" onclick="showResults('2')">2</button>
+                <button class="btn" onclick="showResults('3')">3</button>
+                <button class="btn" onclick="backSpace()" style="margin-top: 3px;"><img src="backspace.png" alt=""></button>
+            </div>
+            <div class="row">
+                
+                <button class="btn" onclick="showResults('%')">%</button>
+                <button class="btn" onclick="showResults('cos')">cos</button>
+                <button class="btn" onclick="showResults('4')">4</button>
+                <button class="btn" onclick="showResults('5')">5</button>
+                <button class="btn" onclick="showResults('6')">6</button>
+                <button class="btn" onclick="showResults('+')">+</button>
+            </div>
+            <div class="row">
+                <button class="btn"><a href="/age.html">Age</a></button>
+                <button class="btn" onclick="showResults('tan')">tan</button>
+                <button class="btn" onclick="showResults('7')">7</button>
+                <button class="btn" onclick="showResults('8')">8</button>
+                <button class="btn" onclick="showResults('9')">9</button>
+                <button class="btn" onclick="showResults('-')">-</button>
+            </div>
+            <div class="row">              
+                <button class="btn" onclick="showResults('&#40;')">(</button>
+                <button class="btn" onclick="showResults('&#41;')">)</button>
+                <button class="btn" onclick="showResults('/')">/</button>
+                <button class="btn" onclick="showResults('0')">0</button>
+                <button class="btn" onclick="showResults('*')">*</button>
+                <button class="btn" onclick="calculateResults('=')">=</button>
+            </div>
+            <div class="row">
+                <button class="btn" onclick='showResults("**")'>^2</button>
+
+                <button class="btn" id="temp"><a href="/temp.html">Temperature</a></button>
+                <button class="btn"><a href="/speed.html">Speed</a></button>
+                <button class="btn"><a href="/loan.html">Loan</a></button>
+                <button class="btn"><a href="/angle.html">Angle</a></button>            
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let resultBar = document.getElementById('resultBar');
+    function showResults(val){
+        resultBar.innerText+=val;
+        
+    }
+    function calculateSine(angle){
+        return Math.sin((angle*Math.PI)/180);
+    }
+    function calculateCosine(angle){
+        return Math.cos((angle*Math.PI)/180);
+    }
+    function calculateTan(angle){
+        return Math.tan((angle*Math.PI)/180);
+    }
+    function calculateResults(){
+        let expression = resultBar.innerText;
+        if (expression.includes('sin')){
+            let angle = expression.replace('sin','');
+            resultBar.innerText = calculateSine(parseFloat(angle));
+        }
+        else if(expression.includes('cos')){
+            let angle = expression.replace('cos','');
+            resultBar.innerText = calculateCosine(parseFloat(angle));
+        }
+        else if(expression.includes('tan')){
+            let angle = expression.replace('tan','');
+            resultBar.innerText = calculateTan(parseFloat(angle));
+        }
+
+        else{
+            try{
+            resultBar.innerText= eval(expression);
+
+        }
+        catch(err){
+            resultBar.innerText = "Error";
+
+        }
+        }
+        
+
+    }
+    function clearResults(){
+        resultBar.innerText = "";
+    }
+    function backSpace(){
+        let resultBar = document.getElementById('resultBar');
+        resultBar.innerText = resultBar.innerText.slice(0,-1);
+    }
+
+</script>
+</html>
